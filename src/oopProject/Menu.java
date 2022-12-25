@@ -1,7 +1,8 @@
 package oopProject;
 
+
 import java.awt.Font;
-import java.awt.PopupMenu;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,20 +14,44 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
 
-
 public class Menu {
 	Menu() {
 		// TODO Auto-generated constructor stub
 
 		JFrame frame2 = new JFrame();
-//		Dropdowm Menu
-		String itemsMenu[] = { "Select Item", "Biryani(110Rs)", "Spaghetti(100Rs)", "FrenchFries(100Rs)",
-				"Brownies(70Rs)", "Burger(100Rs)", "Samosa(50Rs)", "Shwarma(150Rs)", "Chicken RollParatha(150Rs)",
-				"White Sauce Pasta(100Rs)", "Med Pizza(1200Rs)" };
+//		Drop down Menu
+		String itemsMenu[] = { "Select Item", "Biryani(110Rs)", "Spaghetti(110Rs)", "FrenchFries(110Rs)",
+				"Brownies(70Rs)", "Burger(110Rs)", "Samosa(70Rs)", "Shwarma(150Rs)", "Chicken RollParatha(150Rs)",
+				"White Sauce Pasta(110Rs)", "Med Pizza(1200Rs)" };
 		String drinksMenu[] = { "Select Drink", "Mango Shake(110Rs)", "Strawberry Shake(110Rs)",
 				"Chocolate Shake(110Rs)", "Orange Juice(110Rs)", "Coke(110Rs)", "Fanta(110Rs)", "7 up(110Rs)" };
 		String coffeeMenu[] = { "Select Coffee", "Cappuccino(130Rs)", "Espresso(130Rs)", "Latte(130Rs)", "Mocca(130Rs)",
-				"Mix Tea(60Rs)" };
+				"Mix Tea(70Rs)" };
+//		_____________storing price in variables_______
+		int biryani = 110;
+		int spaghetti = 110;
+		int frenchFries = 110;
+		int brownies = 70;
+		int burger = 110;
+		int samosa = 70;
+		int shwarma = 150;
+		int chickenRollParatha = 150;
+		int whiteSaucePasta = 110;
+		int medPizza = 1200;
+		int mangoShake = 110;
+		int strawberryShake = 110;
+		int chocolateShake = 110;
+		int orangeJuice = 110;
+		int coke = 110;
+		int fanta = 110;
+		int _7up = 110;
+		int cappuccino = 130;
+		int espresso = 130;
+		int latte = 130;
+		int mocca = 130;
+		int mixTea = 70;
+
+//		______________________________________________
 //		making objects for each component
 		JComboBox items = new JComboBox(itemsMenu);
 		JComboBox drinks = new JComboBox(drinksMenu);
@@ -34,6 +59,7 @@ public class Menu {
 		JTextField itemQuantity = new JTextField();
 		JTextField drinksQuantity = new JTextField();
 		JTextField coffeeQuantity = new JTextField();
+     	JTextField testTf = new JTextField();
 		JLabel l1 = new JLabel("ITEMS");
 		JLabel l2 = new JLabel("DRINKS");
 		JLabel l3 = new JLabel("COFFEE");
@@ -42,7 +68,6 @@ public class Menu {
 		JLabel l6 = new JLabel("Qty");
 		JLabel l7 = new JLabel("MENU");
 		JLabel l8 = new JLabel("Selected Items :");
-		
 
 		JButton calculateBtn = new JButton("Calculate\n Bill");
 		JButton clearBtn = new JButton("Clear");
@@ -52,6 +77,10 @@ public class Menu {
 //      list
 		DefaultListModel<String> itemsList = new DefaultListModel<>();
 		JList<String> list = new JList<>(itemsList);
+		DefaultListModel<String> testList = new DefaultListModel<>();
+		JList<String> test = new JList<>(testList);
+		DefaultListModel<String> test2List = new DefaultListModel<>();
+		JList<String> test2 = new JList<>(test2List);
 
 //		     setting bounds
 		items.setBounds(130, 105, 180, 30);
@@ -60,6 +89,11 @@ public class Menu {
 		itemQuantity.setBounds(130, 200, 120, 40);
 		drinksQuantity.setBounds(450, 200, 120, 40);
 		coffeeQuantity.setBounds(770, 200, 120, 40);
+		test.setBounds(400, 380, 180, 150);
+		test2.setBounds(590, 380, 180, 150);
+		testTf.setBounds(130, 300, 120, 40);
+		
+
 		l1.setBounds(60, 100, 200, 40);
 		l2.setBounds(370, 100, 200, 40);
 		l3.setBounds(680, 100, 200, 40);
@@ -68,7 +102,7 @@ public class Menu {
 		l6.setBounds(680, 200, 200, 40);
 		l7.setBounds(90, 42, 120, 40);
 		l8.setBounds(130, 200, 300, 300);
-		
+
 		calculateBtn.setBounds(760, 420, 130, 40);
 		clearBtn.setBounds(760, 350, 130, 40);
 		addBtn1.setBounds(130, 250, 90, 30);
@@ -82,6 +116,9 @@ public class Menu {
 		frame2.add(itemQuantity);
 		frame2.add(drinksQuantity);
 		frame2.add(coffeeQuantity);
+		frame2.add(test);
+		frame2.add(testTf);
+		
 		frame2.add(l1);
 		frame2.add(l2);
 		frame2.add(l3);
@@ -90,7 +127,7 @@ public class Menu {
 		frame2.add(l6);
 		frame2.add(l7);
 		frame2.add(l8);
-		
+		frame2.add(test2);
 
 		frame2.add(calculateBtn);
 		frame2.add(clearBtn);
@@ -135,8 +172,19 @@ public class Menu {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new oopProject.BillCalculation();
-				frame2.dispose();
+//				new oopProject.BillCalculation();
+//				frame2.dispose();
+				String stringlistPrice=test2List.get(0);
+				int intlistPrice=Integer.parseInt(stringlistPrice);
+				int TotalPrice=0;
+				for(int i=0;i<test2List.getSize();i++) {
+					TotalPrice=TotalPrice+intlistPrice;
+				}
+				String stringTotalPrice=Integer.toString(TotalPrice);
+				
+				testTf.setText(stringTotalPrice);
+				
+				
 			}
 
 		});
@@ -152,7 +200,37 @@ public class Menu {
 				int intQuantity = Integer.parseInt(getQuantity);
 				String SelectedItem = getSelectedItems + " " + getQuantity;
 				itemsList.add(0, SelectedItem);
+				
+				int indexitems = items.getSelectedIndex();
+				if (indexitems == 1 || indexitems == 2 || indexitems == 3 || indexitems == 5 || indexitems == 9
+						|| indexitems == 10) {
+					testList.add(0, "110");
+				} else if (indexitems == 7 || indexitems == 8) {
+					testList.add(0, "150");
+				} else if (indexitems == 4 || indexitems == 6) {
+					testList.add(0, "70");
+				} else if (indexitems == 10 || indexitems == 2) {
+					testList.add(0, "1200");
+				}
+				String getTestList=testList.get(0);
+				int intgetTestList = Integer.parseInt(getTestList);
+				int Price=intgetTestList*intQuantity;
+				String stringPrice=Integer.toString(Price);
+				test2List.add(0, stringPrice);
+//				drinksQuantity.setText(stringPrice);
+				
 
+				
+				
+				items.setSelectedIndex(0);
+				drinks.setSelectedIndex(0);
+				coffee.setSelectedIndex(0);
+
+			}
+
+			private void test2List(int i, String stringPrice) {
+				// TODO Auto-generated method stub
+				
 			}
 		});
 //		Add Drinks functionality
@@ -165,8 +243,27 @@ public class Menu {
 				String getQuantity = drinksQuantity.getText();
 
 				int intQuantity = Integer.parseInt(getQuantity);
-				String SelectedItem = getSelectedDrinks + " " + getQuantity;
-				itemsList.add(0, SelectedItem);
+				String SelectedDrink = getSelectedDrinks + " " + getQuantity;
+				itemsList.add(0, SelectedDrink);
+				
+				int indexdrinks = drinks.getSelectedIndex();
+				if (indexdrinks == 1 || indexdrinks == 2 || indexdrinks == 3 || indexdrinks == 4 || indexdrinks == 5
+						|| indexdrinks == 6|| indexdrinks == 7) {
+					testList.add(0, "110");
+				}
+				
+				String getTestList=testList.get(0);
+				int intgetTestList = Integer.parseInt(getTestList);
+				int Price=intgetTestList*intQuantity;
+				String stringPrice=Integer.toString(Price);
+				test2List.add(0, stringPrice);
+				
+				items.setSelectedIndex(0);
+				drinks.setSelectedIndex(0);
+				coffee.setSelectedIndex(0);
+
+				
+				
 
 			}
 		});
@@ -180,11 +277,31 @@ public class Menu {
 				String getQuantity = coffeeQuantity.getText();
 
 				int intQuantity = Integer.parseInt(getQuantity);
-				String SelectedItem = getSelectedCoffee + " " + getQuantity;
-				itemsList.add(0, SelectedItem);
+				String SelectedCoffee = getSelectedCoffee + " " + getQuantity;
+				itemsList.add(0, SelectedCoffee);
+				
+				int indexcoffee = coffee.getSelectedIndex();
+
+				if (indexcoffee == 5) {
+					testList.add(0, "70");
+				}
+
+				else if (indexcoffee == 1 || indexcoffee == 2 || indexcoffee == 3 || indexcoffee == 4) {
+					testList.add(0, "130");
+				}
+				items.setSelectedIndex(0);
+				drinks.setSelectedIndex(0);
+				coffee.setSelectedIndex(0);
+				
+				String getTestList=testList.get(0);
+				int intgetTestList = Integer.parseInt(getTestList);
+				int Price=intgetTestList*intQuantity;
+				String stringPrice=Integer.toString(Price);
+				test2List.add(0, stringPrice);
 
 			}
 		});
+		
 
 	}
 

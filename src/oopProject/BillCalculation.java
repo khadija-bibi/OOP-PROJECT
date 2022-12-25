@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JPasswordField;
+
 import javax.swing.JTextField;
 
 public class BillCalculation {
@@ -58,10 +58,10 @@ public class BillCalculation {
 		customerTf.setBounds(380, 470, 130, 35);
 		gTLabel.setBounds(620, 420, 500, 50);
 		gTotalTf.setBounds(710, 430, 130, 35);
-		listitem.setBounds(270, 210, 180, 200);
-		listQty.setBounds(450, 210, 50, 200);
-		listPrice.setBounds(490, 210, 80, 200);
-		listTotalPrice.setBounds(570, 210, 100, 200);
+		listitem.setBounds(275, 210, 170, 200);
+		listQty.setBounds(445, 210, 60, 200);
+		listPrice.setBounds(505, 210, 80, 200);
+		listTotalPrice.setBounds(585, 210, 100, 200);
 		button.setBounds(710, 480, 120, 40);
 
 //	setting fonts
@@ -109,6 +109,8 @@ public class BillCalculation {
 				frame3.dispose();
 			}
 		});
+		
+		
 
 	};
 
