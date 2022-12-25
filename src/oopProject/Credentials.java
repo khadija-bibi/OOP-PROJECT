@@ -1,6 +1,7 @@
 package oopProject;
 
 import java.awt.Font;
+
 import java.awt.Menu;
 import java.awt.event.*;
 
@@ -23,13 +24,14 @@ public class Credentials  {
 //		making objects for each component
 		JFrame frame1 = new JFrame("THE FOOD VILLA");
 		final JLabel confirmationMsg = new JLabel();
-		JLabel l1 = new JLabel("UserName:");
+		JLabel l1 = new JLabel("Username:");
 		JLabel l2 = new JLabel("Password:");
 		JLabel l3 = new JLabel("THE HOUSE VILLA ");
 		
 		final JTextField username = new JTextField();
 		final JPasswordField password = new JPasswordField();
 		JButton button = new JButton("Login");
+		
 
 //		setting bounds
 		l3.setBounds(350, 50, 500, 50);
@@ -39,6 +41,7 @@ public class Credentials  {
 		password.setBounds(450, 295, 200, 40);
 		button.setBounds(430, 400, 100, 40);
 		confirmationMsg.setBounds(430, 470, 200, 50);
+		
 //		setting fonts
 		l3.setFont(new Font(null, 0, 30));
 		l1.setFont(new Font(null, 0, 20));
@@ -62,37 +65,21 @@ public class Credentials  {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-//				Main mn=new Main();
-				Credentials cr=new Credentials();
+				String issuedUsername = username.getText();
+				String issuedPassword = new String(password.getPassword());
+				String settedUsername = "khadija";
+				String settedPassword = "123";
 
-
+				if (issuedUsername.equals(settedUsername) && issuedPassword.equals(settedPassword)) {
+                    new oopProject.Menu();
+                    frame1.dispose();
+					
+				} else
+					confirmationMsg.setText("Invalid Username or Password");
+		
 	}
 		});
-//		ActionListener a1=new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				// TODO Auto-generated method stub
-//				String issuedUsername = username.getText();
-//				String issuedPassword = new String(password.getPassword());
-//				String settedUsername = "1";
-//				String settedPassword = "1";
-//
-//				if (issuedUsername.equals(settedUsername) && issuedPassword.equals(settedPassword)) {
-////				confirmationMsg.setText("Successfull login");
-//					
-//				Menu mn = new Menu();
-//				
-////				mn.setVisible(true);
-//					frame1.dispose();
-////					Credentials cr=new Credentials();
-//					
-//				} else
-//					confirmationMsg.setText("Invalid Username or Password");
-//
-//			}
-//			};
-//			button.addActionListener(a1);
+//		
 		};
 	}
 
