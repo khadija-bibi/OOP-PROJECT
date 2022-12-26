@@ -13,7 +13,10 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 
 public class BillCalculation {
-	public BillCalculation() {
+	
+    JTextField gTotalTf ;
+
+	public BillCalculation( ) {
 		// TODO Auto-generated constructor stub
 
 //	making objects for each component
@@ -28,7 +31,7 @@ public class BillCalculation {
 		JLabel returnLabel = new JLabel("Return");
 		JLabel itemSelLabel = new JLabel("ITEM SELECTED");
 
-		JTextField gTotalTf = new JTextField();
+	    JTextField gTotalTf = new JTextField();
 		JTextField customerTf = new JTextField();
 		JTextField retTf = new JTextField();
 		JButton button = new JButton("Get Receipt");
