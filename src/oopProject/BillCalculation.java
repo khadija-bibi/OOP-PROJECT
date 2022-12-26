@@ -17,10 +17,19 @@ public class BillCalculation extends Menu{
     JTextField gTotalTf ;
 	 String stringTotalPrice;
 	 JList<String>listItem;
+	 JList<String>listQty;
+	 JList<String>listPrice;
+	 JList<String>listTotalPrice;
 
-	public BillCalculation(String stringTotalPrice,JList<String>listItem ) {
+	public BillCalculation(String stringTotalPrice,JList<String>listItem,JList<String>listQty,JList<String>listPrice,
+			JList<String>listTotalPrice) {
 	this.stringTotalPrice=stringTotalPrice;
 	this.listItem=listItem;
+	this.listQty=listQty;
+	this.listPrice=listPrice;
+	this.listTotalPrice=listTotalPrice;
+
+
 		// TODO Auto-generated constructor stub
 	
 
@@ -48,14 +57,14 @@ public class BillCalculation extends Menu{
 //		DefaultListModel<String> calItemList = new DefaultListModel<>();
 		JList<String> listitem = listItem;
 
-		DefaultListModel<String> calQtyList = new DefaultListModel<>();
-		JList<String> listQty = new JList<>(calQtyList);
+//		DefaultListModel<String> calQtyList = new DefaultListModel<>();
+		JList<String> listQty1 =listQty ;
 
-		DefaultListModel<String> calPriceList = new DefaultListModel<>();
-		JList<String> listPrice = new JList<>(calPriceList);
+//		DefaultListModel<String> calPriceList = new DefaultListModel<>();
+		JList<String> listPrice1 = listPrice;
 
-		DefaultListModel<String> totalPriceList = new DefaultListModel<>();
-		JList<String> listTotalPrice = new JList<>(calPriceList);
+//		DefaultListModel<String> totalPriceList = new DefaultListModel<>();
+		JList<String> listTotalPrice1 =listTotalPrice;
 
 //	setting bounds
 		billCalLabel.setBounds(350, 40, 500, 50);
@@ -71,9 +80,9 @@ public class BillCalculation extends Menu{
 		gTLabel.setBounds(620, 420, 500, 50);
 		gTotalTf.setBounds(710, 430, 130, 35);
 		listitem.setBounds(275, 210, 170, 200);
-		listQty.setBounds(445, 210, 60, 200);
-		listPrice.setBounds(505, 210, 80, 200);
-		listTotalPrice.setBounds(585, 210, 100, 200);
+		listQty1.setBounds(445, 210, 60, 200);
+		listPrice1.setBounds(505, 210, 80, 200);
+		listTotalPrice1.setBounds(585, 210, 100, 200);
 		receiptBtn.setBounds(710, 470, 120, 40);
 		returnBtn.setBounds(330, 470, 110, 30);
 		
@@ -104,9 +113,9 @@ public class BillCalculation extends Menu{
 		frame3.add(customerTf);
 		frame3.add(retTf);
 		frame3.add(listitem);
-		frame3.add(listQty);
-		frame3.add(listPrice);
-		frame3.add(listTotalPrice);
+		frame3.add(listQty1);
+		frame3.add(listPrice1);
+		frame3.add(listTotalPrice1);
 		frame3.add(receiptBtn);
 		frame3.add(returnBtn);
 
@@ -137,7 +146,7 @@ public class BillCalculation extends Menu{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new oopProject.Receipt(stringTotalPrice);
+				new oopProject.Receipt(stringTotalPrice,listItem,listQty,listTotalPrice);
 				
 				frame3.dispose();
 			}

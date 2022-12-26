@@ -79,10 +79,13 @@ public class Menu {
 		JList<String> list = new JList<>(itemsList);
 		DefaultListModel<String> itemsListWithoutQty = new DefaultListModel<>();
 		JList<String> listItem = new JList<>(itemsListWithoutQty);
-		DefaultListModel<String> testList = new DefaultListModel<>();
-		JList<String> test = new JList<>(testList);
-		DefaultListModel<String> test2List = new DefaultListModel<>();
-		JList<String> test2 = new JList<>(test2List);
+		DefaultListModel<String> calPriceList = new DefaultListModel<>();
+		JList<String> listPrice = new JList<>(calPriceList);
+		DefaultListModel<String> totalPriceList = new DefaultListModel<>();
+		JList<String> listTotalPrice = new JList<>(totalPriceList);
+		
+		DefaultListModel<String> calQtyList = new DefaultListModel<>();
+		JList<String> listQty = new JList<>(calQtyList);
 
 //		     setting bounds
 		items.setBounds(130, 105, 180, 30);
@@ -91,9 +94,9 @@ public class Menu {
 		itemQuantity.setBounds(130, 200, 120, 40);
 		drinksQuantity.setBounds(450, 200, 120, 40);
 		coffeeQuantity.setBounds(770, 200, 120, 40);
-		test.setBounds(400, 380, 180, 150);
-		test2.setBounds(590, 380, 180, 150);
-		testTf.setBounds(130, 300, 120, 40);
+		listPrice.setBounds(400, 380, 180, 150);
+		listTotalPrice.setBounds(590, 380, 180, 150);
+//		testTf.setBounds(130, 300, 120, 40);
 
 		l1.setBounds(60, 100, 200, 40);
 		l2.setBounds(370, 100, 200, 40);
@@ -117,7 +120,7 @@ public class Menu {
 		frame2.add(itemQuantity);
 		frame2.add(drinksQuantity);
 		frame2.add(coffeeQuantity);
-		frame2.add(test);
+		frame2.add(listPrice);
 		frame2.add(testTf);
 
 		frame2.add(l1);
@@ -128,7 +131,7 @@ public class Menu {
 		frame2.add(l6);
 		frame2.add(l7);
 		frame2.add(l8);
-		frame2.add(test2);
+		frame2.add(listTotalPrice);
 
 		frame2.add(calculateBtn);
 		frame2.add(clearBtn);
@@ -175,8 +178,8 @@ public class Menu {
 				// TODO Auto-generated method stub
 				
 				int TotalPrice = 0;
-				for (int i = 0; i < test2List.getSize(); i++) {
-				String stringlistPrice = test2List.getElementAt(i);
+				for (int i = 0; i < totalPriceList.getSize(); i++) {
+				String stringlistPrice = totalPriceList.getElementAt(i);
 				int intlistPrice = Integer.parseInt(stringlistPrice);
 				
 				
@@ -185,7 +188,7 @@ public class Menu {
 				String stringTotalPrice = Integer.toString(TotalPrice);
 
 //				testTf.setText(stringTotalPrice);
-				new oopProject.BillCalculation(stringTotalPrice,listItem);
+				new oopProject.BillCalculation(stringTotalPrice,listItem,listQty,listPrice, listTotalPrice);
 				frame2.dispose();
 
 			}
@@ -205,23 +208,25 @@ public class Menu {
 				itemsList.add(0, SelectedItem);
 				
 				itemsListWithoutQty.add(0,  (String) getSelectedItems);
+				
+				calQtyList.add(0, getQuantity);
 
 				int indexitems = items.getSelectedIndex();
 				if (indexitems == 1 || indexitems == 2 || indexitems == 3 || indexitems == 5 || indexitems == 9
 						|| indexitems == 10) {
-					testList.add(0, "110");
+					calPriceList.add(0, "110");
 				} else if (indexitems == 7 || indexitems == 8) {
-					testList.add(0, "150");
+					calPriceList.add(0, "150");
 				} else if (indexitems == 4 || indexitems == 6) {
-					testList.add(0, "70");
+					calPriceList.add(0, "70");
 				} else if (indexitems == 10 || indexitems == 2) {
-					testList.add(0, "1200");
+					calPriceList.add(0, "1200");
 				}
-				String getTestList = testList.get(0);
+				String getTestList = calPriceList.get(0);
 				int intgetTestList = Integer.parseInt(getTestList);
 				int Price = intgetTestList * intQuantity;
 				String stringPrice = Integer.toString(Price);
-				test2List.add(0, stringPrice);
+				totalPriceList.add(0, stringPrice);
 
 				items.setSelectedIndex(0);
 				drinks.setSelectedIndex(0);
@@ -244,18 +249,20 @@ public class Menu {
 				String SelectedDrink = getSelectedDrinks + " " + getQuantity;
 				itemsList.add(0, SelectedDrink);
 				itemsListWithoutQty.add(0,  (String) getSelectedDrinks);
+				
+				calQtyList.add(0, getQuantity);
 
 				int indexdrinks = drinks.getSelectedIndex();
 				if (indexdrinks == 1 || indexdrinks == 2 || indexdrinks == 3 || indexdrinks == 4 || indexdrinks == 5
 						|| indexdrinks == 6 || indexdrinks == 7) {
-					testList.add(0, "110");
+					calPriceList.add(0, "110");
 				}
 
-				String getTestList = testList.get(0);
+				String getTestList = calPriceList.get(0);
 				int intgetTestList = Integer.parseInt(getTestList);
 				int Price = intgetTestList * intQuantity;
 				String stringPrice = Integer.toString(Price);
-				test2List.add(0, stringPrice);
+				totalPriceList.add(0, stringPrice);
 
 				items.setSelectedIndex(0);
 				drinks.setSelectedIndex(0);
@@ -276,25 +283,27 @@ public class Menu {
 				String SelectedCoffee = getSelectedCoffee + " " + getQuantity;
 				itemsList.add(0, SelectedCoffee);
 				itemsListWithoutQty.add(0,  (String) getSelectedCoffee);
+				
+				calQtyList.add(0, getQuantity);
 
 				int indexcoffee = coffee.getSelectedIndex();
 
 				if (indexcoffee == 5) {
-					testList.add(0, "70");
+					calPriceList.add(0, "70");
 				}
 
 				else if (indexcoffee == 1 || indexcoffee == 2 || indexcoffee == 3 || indexcoffee == 4) {
-					testList.add(0, "130");
+					calPriceList.add(0, "130");
 				}
 				items.setSelectedIndex(0);
 				drinks.setSelectedIndex(0);
 				coffee.setSelectedIndex(0);
 
-				String getTestList = testList.get(0);
+				String getTestList = calPriceList.get(0);
 				int intgetTestList = Integer.parseInt(getTestList);
 				int Price = intgetTestList * intQuantity;
 				String stringPrice = Integer.toString(Price);
-				test2List.add(0, stringPrice);
+				totalPriceList.add(0, stringPrice);
 
 			}
 		});

@@ -14,11 +14,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
-public class Receipt  {
+public class Receipt extends Menu  {
 	 String stringTotalPrice;
-	public Receipt(String stringTotalPrice) {
+	 JList<String>listItem;
+	 JList<String>listQty;
+	 JList<String>listTotalPrice;
+	public Receipt(String stringTotalPrice,JList<String>listItem,JList<String>listQty,
+			JList<String>listTotalPrice) {
 		
 		this.stringTotalPrice=stringTotalPrice;
+		this.listItem=listItem;
+		this.listQty=listQty;
+		this.listTotalPrice=listTotalPrice;
 		// TODO Auto-generated constructor stub
 		 Date date = new Date();
 	      SimpleDateFormat dateformatter = new SimpleDateFormat("dd/MM/yy");
@@ -46,14 +53,14 @@ public class Receipt  {
 		JLabel timeLabel = new JLabel(time);
 //       lists
 
-		DefaultListModel<String> recDesList = new DefaultListModel<>();
-		JList<String> listrecDes = new JList<>(recDesList);
+		
+		JList<String> listrecDes =listItem;
 
-		DefaultListModel<String> recQtyList = new DefaultListModel<>();
-		JList<String> listrecQty = new JList<>(recQtyList);
+	
+		JList<String> listrecQty =listQty;
 
-		DefaultListModel<String> recPriceList = new DefaultListModel<>();
-		JList<String> listrecPrice = new JList<>(recPriceList);
+		
+		JList<String> listrecPrice = listTotalPrice;
 
 //		setting bounds
 		titleLabel.setBounds(420, 30, 300, 50);
