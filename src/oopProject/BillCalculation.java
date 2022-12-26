@@ -12,14 +12,20 @@ import javax.swing.JList;
 
 import javax.swing.JTextField;
 
-public class BillCalculation {
+public class BillCalculation extends Menu{
 	
     JTextField gTotalTf ;
+	 String stringTotalPrice;
+	 JList<String>listItem;
 
-	public BillCalculation( ) {
+	public BillCalculation(String stringTotalPrice,JList<String>listItem ) {
+	this.stringTotalPrice=stringTotalPrice;
+	this.listItem=listItem;
 		// TODO Auto-generated constructor stub
+	
 
 //	making objects for each component
+	
 		JFrame frame3 = new JFrame();
 		JLabel billCalLabel = new JLabel("BILL CALCULATION");
 		JLabel itemsLabel = new JLabel("Items");
@@ -30,14 +36,17 @@ public class BillCalculation {
 		JLabel customerLabel = new JLabel("Customer");
 		JLabel returnLabel = new JLabel("Return");
 		JLabel itemSelLabel = new JLabel("ITEM SELECTED");
-
-	    JTextField gTotalTf = new JTextField();
+		JButton receiptBtn = new JButton("Get Receipt");
+		JButton returnBtn = new JButton("Cal Return");
+		
+	    JTextField gTotalTf = new JTextField(stringTotalPrice);
 		JTextField customerTf = new JTextField();
+		
 		JTextField retTf = new JTextField();
-		JButton button = new JButton("Get Receipt");
+		
 //      list
-		DefaultListModel<String> calItemList = new DefaultListModel<>();
-		JList<String> listitem = new JList<>(calItemList);
+//		DefaultListModel<String> calItemList = new DefaultListModel<>();
+		JList<String> listitem = listItem;
 
 		DefaultListModel<String> calQtyList = new DefaultListModel<>();
 		JList<String> listQty = new JList<>(calQtyList);
@@ -55,18 +64,19 @@ public class BillCalculation {
 		qtyLabel.setBounds(450, 150, 500, 50);
 		priceLabel.setBounds(520, 150, 500, 50);
 		totalLabel.setBounds(600, 150, 500, 50);
-		returnLabel.setBounds(390, 420, 500, 50);
+		returnLabel.setBounds(480, 420, 500, 50);
 		customerLabel.setBounds(190, 420, 500, 50);
-		retTf.setBounds(170, 470, 130, 35);
-		customerTf.setBounds(380, 470, 130, 35);
+		retTf.setBounds(470, 470, 130, 35);
+		customerTf.setBounds(170, 470, 130, 35);
 		gTLabel.setBounds(620, 420, 500, 50);
 		gTotalTf.setBounds(710, 430, 130, 35);
 		listitem.setBounds(275, 210, 170, 200);
 		listQty.setBounds(445, 210, 60, 200);
 		listPrice.setBounds(505, 210, 80, 200);
 		listTotalPrice.setBounds(585, 210, 100, 200);
-		button.setBounds(710, 480, 120, 40);
-
+		receiptBtn.setBounds(710, 470, 120, 40);
+		returnBtn.setBounds(330, 470, 110, 30);
+		
 //	setting fonts
 		billCalLabel.setFont(new Font(null, 0, 30));
 		itemSelLabel.setFont(new Font(null, 0, 25));
@@ -97,21 +107,43 @@ public class BillCalculation {
 		frame3.add(listQty);
 		frame3.add(listPrice);
 		frame3.add(listTotalPrice);
-		frame3.add(button);
+		frame3.add(receiptBtn);
+		frame3.add(returnBtn);
 
 		frame3.setSize(1000, 600);
 		frame3.setLayout(null);
 		frame3.setVisible(true);
-//		getting receipt
-		button.addActionListener(new ActionListener() {
+//		getting return
+		returnBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new oopProject.Receipt();
+//				
+				int intTotalPrice=Integer.parseInt(stringTotalPrice);
+				String stringCustomer=customerTf.getText();
+				int intCustomer=Integer.parseInt(stringCustomer);
+				int intReturn=intCustomer-intTotalPrice;
+				String stringReturn=Integer.toString(intReturn);
+				retTf.setText(stringReturn);
+//				
+			}
+		});
+		
+		
+//		getting receipt
+		receiptBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new oopProject.Receipt(stringTotalPrice);
+				
 				frame3.dispose();
 			}
 		});
+		
+		
 		
 		
 

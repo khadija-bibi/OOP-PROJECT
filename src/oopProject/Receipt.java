@@ -14,8 +14,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
-public class Receipt {
-	public Receipt() {
+public class Receipt  {
+	 String stringTotalPrice;
+	public Receipt(String stringTotalPrice) {
+		
+		this.stringTotalPrice=stringTotalPrice;
 		// TODO Auto-generated constructor stub
 		 Date date = new Date();
 	      SimpleDateFormat dateformatter = new SimpleDateFormat("dd/MM/yy");
@@ -37,7 +40,7 @@ public class Receipt {
 		JLabel receiptQtyLabel = new JLabel("Qty");
 		JLabel receiptPriceLabel = new JLabel("Price");
 		JLabel totalLabel = new JLabel("TOTAL");
-		JLabel finalTotalLabel = new JLabel("3000");
+		JLabel finalTotalLabel = new JLabel(stringTotalPrice);
 		JLabel thankLabel = new JLabel("THANK YOU");
 		JLabel dateLabel = new JLabel(str);
 		JLabel timeLabel = new JLabel(time);
