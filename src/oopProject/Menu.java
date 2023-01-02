@@ -14,11 +14,12 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 
 public class Menu {
-	
+
 	Menu() {
 		// TODO Auto-generated constructor stub
 
-		JFrame frame2 = new JFrame();
+		JFrame frame2 = new JFrame("THE FOOD VILLA");
+
 //		Drop down Menu
 		String itemsMenu[] = { "Select Item", "Biryani(110Rs)", "Spaghetti(110Rs)", "FrenchFries(110Rs)",
 				"Brownies(70Rs)", "Burger(110Rs)", "Samosa(70Rs)", "Shwarma(150Rs)", "Chicken RollParatha(150Rs)",
@@ -27,31 +28,7 @@ public class Menu {
 				"Chocolate Shake(110Rs)", "Orange Juice(110Rs)", "Coke(110Rs)", "Fanta(110Rs)", "7 up(110Rs)" };
 		String coffeeMenu[] = { "Select Coffee", "Cappuccino(130Rs)", "Espresso(130Rs)", "Latte(130Rs)", "Mocca(130Rs)",
 				"Mix Tea(70Rs)" };
-//		_____________storing price in variables_______
-		int biryani = 110;
-		int spaghetti = 110;
-		int frenchFries = 110;
-		int brownies = 70;
-		int burger = 110;
-		int samosa = 70;
-		int shwarma = 150;
-		int chickenRollParatha = 150;
-		int whiteSaucePasta = 110;
-		int medPizza = 1200;
-		int mangoShake = 110;
-		int strawberryShake = 110;
-		int chocolateShake = 110;
-		int orangeJuice = 110;
-		int coke = 110;
-		int fanta = 110;
-		int _7up = 110;
-		int cappuccino = 130;
-		int espresso = 130;
-		int latte = 130;
-		int mocca = 130;
-		int mixTea = 70;
 
-//		______________________________________________
 //		making objects for each component
 		JComboBox items = new JComboBox(itemsMenu);
 		JComboBox drinks = new JComboBox(drinksMenu);
@@ -59,7 +36,7 @@ public class Menu {
 		JTextField itemQuantity = new JTextField();
 		JTextField drinksQuantity = new JTextField();
 		JTextField coffeeQuantity = new JTextField();
-		JTextField testTf = new JTextField();
+
 		JLabel l1 = new JLabel("ITEMS");
 		JLabel l2 = new JLabel("DRINKS");
 		JLabel l3 = new JLabel("COFFEE");
@@ -74,16 +51,19 @@ public class Menu {
 		JButton addBtn1 = new JButton("ADD");
 		JButton addBtn2 = new JButton("ADD");
 		JButton addBtn3 = new JButton("ADD");
-//      list
+//      list model
 		DefaultListModel<String> itemsList = new DefaultListModel<>();
 		JList<String> list = new JList<>(itemsList);
+
 		DefaultListModel<String> itemsListWithoutQty = new DefaultListModel<>();
 		JList<String> listItem = new JList<>(itemsListWithoutQty);
+
 		DefaultListModel<String> calPriceList = new DefaultListModel<>();
 		JList<String> listPrice = new JList<>(calPriceList);
+
 		DefaultListModel<String> totalPriceList = new DefaultListModel<>();
 		JList<String> listTotalPrice = new JList<>(totalPriceList);
-		
+
 		DefaultListModel<String> calQtyList = new DefaultListModel<>();
 		JList<String> listQty = new JList<>(calQtyList);
 
@@ -96,7 +76,6 @@ public class Menu {
 		coffeeQuantity.setBounds(770, 200, 120, 40);
 		listPrice.setBounds(400, 380, 180, 150);
 		listTotalPrice.setBounds(590, 380, 180, 150);
-//		testTf.setBounds(130, 300, 120, 40);
 
 		l1.setBounds(60, 100, 200, 40);
 		l2.setBounds(370, 100, 200, 40);
@@ -112,6 +91,7 @@ public class Menu {
 		addBtn1.setBounds(130, 250, 90, 30);
 		addBtn2.setBounds(450, 250, 90, 30);
 		addBtn3.setBounds(770, 250, 90, 30);
+
 		list.setBounds(130, 380, 180, 150);
 //				adding components
 		frame2.add(items);
@@ -120,8 +100,6 @@ public class Menu {
 		frame2.add(itemQuantity);
 		frame2.add(drinksQuantity);
 		frame2.add(coffeeQuantity);
-		frame2.add(listPrice);
-		frame2.add(testTf);
 
 		frame2.add(l1);
 		frame2.add(l2);
@@ -131,11 +109,9 @@ public class Menu {
 		frame2.add(l6);
 		frame2.add(l7);
 		frame2.add(l8);
-		frame2.add(listTotalPrice);
 
 		frame2.add(calculateBtn);
 		frame2.add(clearBtn);
-		frame2.add(addBtn1);
 		frame2.add(addBtn1);
 		frame2.add(addBtn2);
 		frame2.add(addBtn3);
@@ -167,6 +143,10 @@ public class Menu {
 				drinksQuantity.setText(null);
 				coffeeQuantity.setText(null);
 				itemsList.clear();
+				itemsListWithoutQty.clear();
+				calPriceList.clear();
+				totalPriceList.clear();
+				calQtyList.clear();
 			}
 
 		});
@@ -176,19 +156,17 @@ public class Menu {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
-				int TotalPrice = 0;
-				for (int i = 0; i < totalPriceList.getSize(); i++) {
-				String stringlistPrice = totalPriceList.getElementAt(i);
-				int intlistPrice = Integer.parseInt(stringlistPrice);
-				
-				
-					TotalPrice = TotalPrice + intlistPrice;
-				}
-				String stringTotalPrice = Integer.toString(TotalPrice);
 
-//				testTf.setText(stringTotalPrice);
-				new oopProject.BillCalculation(stringTotalPrice,listItem,listQty,listPrice, listTotalPrice);
+				int GrandTotalPrice = 0;
+				for (int i = 0; i < totalPriceList.getSize(); i++) {
+					String stringlistPrice = totalPriceList.getElementAt(i);
+					int intlistPrice = Integer.parseInt(stringlistPrice);
+
+					GrandTotalPrice = GrandTotalPrice + intlistPrice;
+				}
+				String stringGrandTotalPrice = Integer.toString(GrandTotalPrice);
+
+				new oopProject.BillCalculation(stringGrandTotalPrice, listItem, listQty, listPrice, listTotalPrice);
 				frame2.dispose();
 
 			}
@@ -206,9 +184,9 @@ public class Menu {
 				int intQuantity = Integer.parseInt(getQuantity);
 				String SelectedItem = getSelectedItems + " " + getQuantity;
 				itemsList.add(0, SelectedItem);
-				
-				itemsListWithoutQty.add(0,  (String) getSelectedItems);
-				
+
+				itemsListWithoutQty.add(0, (String) getSelectedItems);
+
 				calQtyList.add(0, getQuantity);
 
 				int indexitems = items.getSelectedIndex();
@@ -222,6 +200,7 @@ public class Menu {
 				} else if (indexitems == 10 || indexitems == 2) {
 					calPriceList.add(0, "1200");
 				}
+//				price list index
 				String getTestList = calPriceList.get(0);
 				int intgetTestList = Integer.parseInt(getTestList);
 				int Price = intgetTestList * intQuantity;
@@ -234,7 +213,6 @@ public class Menu {
 
 			}
 
-			
 		});
 //		Add Drinks functionality
 		addBtn2.addActionListener(new ActionListener() {
@@ -248,8 +226,8 @@ public class Menu {
 				int intQuantity = Integer.parseInt(getQuantity);
 				String SelectedDrink = getSelectedDrinks + " " + getQuantity;
 				itemsList.add(0, SelectedDrink);
-				itemsListWithoutQty.add(0,  (String) getSelectedDrinks);
-				
+				itemsListWithoutQty.add(0, (String) getSelectedDrinks);
+
 				calQtyList.add(0, getQuantity);
 
 				int indexdrinks = drinks.getSelectedIndex();
@@ -282,8 +260,8 @@ public class Menu {
 				int intQuantity = Integer.parseInt(getQuantity);
 				String SelectedCoffee = getSelectedCoffee + " " + getQuantity;
 				itemsList.add(0, SelectedCoffee);
-				itemsListWithoutQty.add(0,  (String) getSelectedCoffee);
-				
+				itemsListWithoutQty.add(0, (String) getSelectedCoffee);
+
 				calQtyList.add(0, getQuantity);
 
 				int indexcoffee = coffee.getSelectedIndex();

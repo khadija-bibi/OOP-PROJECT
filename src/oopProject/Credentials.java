@@ -12,8 +12,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 
-import java.awt.event.*;
-
 public class Credentials {
 
 	Credentials() {
@@ -24,7 +22,7 @@ public class Credentials {
 		final JLabel confirmationMsg = new JLabel();
 		JLabel l1 = new JLabel("Username:");
 		JLabel l2 = new JLabel("Password:");
-		JLabel l3 = new JLabel("THE HOUSE VILLA ");
+		JLabel l3 = new JLabel("THE FOOD VILLA ");
 
 		final JTextField username = new JTextField();
 		final JPasswordField password = new JPasswordField();
@@ -53,6 +51,7 @@ public class Credentials {
 		frame1.add(password);
 		frame1.add(button);
 		frame1.add(confirmationMsg);
+
 		frame1.setSize(1000, 600);
 		frame1.setLayout(null);
 		frame1.setVisible(true);

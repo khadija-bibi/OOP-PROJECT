@@ -1,42 +1,36 @@
 package oopProject;
 
-import java.awt.Container;
-
 import java.awt.Font;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.Date;
-
-import javax.swing.DefaultListModel;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
-public class Receipt extends Menu  {
-	 String stringTotalPrice;
-	 JList<String>listItem;
-	 JList<String>listQty;
-	 JList<String>listTotalPrice;
-	public Receipt(String stringTotalPrice,JList<String>listItem,JList<String>listQty,
-			JList<String>listTotalPrice) {
-		
-		this.stringTotalPrice=stringTotalPrice;
-		this.listItem=listItem;
-		this.listQty=listQty;
-		this.listTotalPrice=listTotalPrice;
+public class Receipt extends Menu {
+	String stringTotalPrice;
+	JList<String> listItem;
+	JList<String> listQty;
+	JList<String> listTotalPrice;
+
+	public Receipt(String stringTotalPrice, JList<String> listItem, JList<String> listQty,
+			JList<String> listTotalPrice) {
+
+		this.stringTotalPrice = stringTotalPrice;
+		this.listItem = listItem;
+		this.listQty = listQty;
+		this.listTotalPrice = listTotalPrice;
 		// TODO Auto-generated constructor stub
-		 Date date = new Date();
-	      SimpleDateFormat dateformatter = new SimpleDateFormat("dd/MM/yy");
-	       String str = dateformatter.format(date);	
-	       DateFormat timeformatter = new SimpleDateFormat("hh:mm:ss a");
-	        String time = timeformatter.format(new Date());
+		Date date = new Date();
+		SimpleDateFormat dateformatter = new SimpleDateFormat("dd/MM/yy");
+		String str = dateformatter.format(date);
+		DateFormat timeformatter = new SimpleDateFormat("hh:mm:ss a");
+		String time = timeformatter.format(new Date());
 
 //		making objects for each component
 		JFrame frame4 = new JFrame();
 
-		Container con = new Container();
 		JLabel titleLabel = new JLabel("The Food Villa");
 		JLabel addLabel = new JLabel("Address:");
 		JLabel phoneLabel = new JLabel("Telephone Number:");
@@ -53,13 +47,10 @@ public class Receipt extends Menu  {
 		JLabel timeLabel = new JLabel(time);
 //       lists
 
-		
-		JList<String> listrecDes =listItem;
+		JList<String> listrecDes = listItem;
 
-	
-		JList<String> listrecQty =listQty;
+		JList<String> listrecQty = listQty;
 
-		
 		JList<String> listrecPrice = listTotalPrice;
 
 //		setting bounds
@@ -70,8 +61,8 @@ public class Receipt extends Menu  {
 		phoneDesLabel.setBounds(510, 80, 400, 40);
 		receiptLabel.setBounds(420, 130, 400, 40);
 		desLabel.setBounds(280, 160, 400, 40);
-		receiptQtyLabel.setBounds(520, 160, 400, 40);
-		receiptPriceLabel.setBounds(630, 160, 400, 40);
+		receiptQtyLabel.setBounds(490, 160, 400, 40);
+		receiptPriceLabel.setBounds(600, 160, 400, 40);
 		totalLabel.setBounds(280, 380, 400, 40);
 		finalTotalLabel.setBounds(630, 380, 400, 40);
 		thankLabel.setBounds(420, 450, 400, 40);
@@ -119,7 +110,7 @@ public class Receipt extends Menu  {
 		frame4.setSize(1000, 600);
 		frame4.setLayout(null);
 		frame4.setVisible(true);
-		
+
 	};
 
 }

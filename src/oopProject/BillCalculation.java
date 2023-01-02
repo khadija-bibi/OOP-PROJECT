@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,30 +11,28 @@ import javax.swing.JList;
 
 import javax.swing.JTextField;
 
-public class BillCalculation extends Menu{
-	
-    JTextField gTotalTf ;
-	 String stringTotalPrice;
-	 JList<String>listItem;
-	 JList<String>listQty;
-	 JList<String>listPrice;
-	 JList<String>listTotalPrice;
+public class BillCalculation extends Menu {
 
-	public BillCalculation(String stringTotalPrice,JList<String>listItem,JList<String>listQty,JList<String>listPrice,
-			JList<String>listTotalPrice) {
-	this.stringTotalPrice=stringTotalPrice;
-	this.listItem=listItem;
-	this.listQty=listQty;
-	this.listPrice=listPrice;
-	this.listTotalPrice=listTotalPrice;
+	JTextField gTotalTf;
+	String stringGrandTotalPrice;
+	JList<String> listItem;
+	JList<String> listQty;
+	JList<String> listPrice;
+	JList<String> listTotalPrice;
 
+	public BillCalculation(String stringGrandTotalPrice, JList<String> listItem, JList<String> listQty,
+			JList<String> listPrice, JList<String> listTotalPrice) {
+		this.stringGrandTotalPrice = stringGrandTotalPrice;
+		this.listItem = listItem;
+		this.listQty = listQty;
+		this.listPrice = listPrice;
+		this.listTotalPrice = listTotalPrice;
 
 		// TODO Auto-generated constructor stub
-	
 
 //	making objects for each component
-	
-		JFrame frame3 = new JFrame();
+
+		JFrame frame3 = new JFrame("THE FOOD VILLA");
 		JLabel billCalLabel = new JLabel("BILL CALCULATION");
 		JLabel itemsLabel = new JLabel("Items");
 		JLabel qtyLabel = new JLabel("Qty");
@@ -47,33 +44,29 @@ public class BillCalculation extends Menu{
 		JLabel itemSelLabel = new JLabel("ITEM SELECTED");
 		JButton receiptBtn = new JButton("Get Receipt");
 		JButton returnBtn = new JButton("Cal Return");
-		
-	    JTextField gTotalTf = new JTextField(stringTotalPrice);
+
+		JTextField gTotalTf = new JTextField(stringGrandTotalPrice);
 		JTextField customerTf = new JTextField();
-		
+
 		JTextField retTf = new JTextField();
-		
-//      list
-//		DefaultListModel<String> calItemList = new DefaultListModel<>();
+
+//      list variables
 		JList<String> listitem = listItem;
 
-//		DefaultListModel<String> calQtyList = new DefaultListModel<>();
-		JList<String> listQty1 =listQty ;
+		JList<String> listQty1 = listQty;
 
-//		DefaultListModel<String> calPriceList = new DefaultListModel<>();
 		JList<String> listPrice1 = listPrice;
 
-//		DefaultListModel<String> totalPriceList = new DefaultListModel<>();
-		JList<String> listTotalPrice1 =listTotalPrice;
+		JList<String> listTotalPrice1 = listTotalPrice;
 
 //	setting bounds
 		billCalLabel.setBounds(350, 40, 500, 50);
 		itemSelLabel.setBounds(380, 90, 500, 50);
 		itemsLabel.setBounds(290, 150, 500, 50);
-		qtyLabel.setBounds(450, 150, 500, 50);
-		priceLabel.setBounds(520, 150, 500, 50);
-		totalLabel.setBounds(600, 150, 500, 50);
-		returnLabel.setBounds(480, 420, 500, 50);
+		qtyLabel.setBounds(430, 150, 500, 50);
+		priceLabel.setBounds(490, 150, 500, 50);
+		totalLabel.setBounds(570, 150, 500, 50);
+		returnLabel.setBounds(450, 420, 500, 50);
 		customerLabel.setBounds(190, 420, 500, 50);
 		retTf.setBounds(470, 470, 130, 35);
 		customerTf.setBounds(170, 470, 130, 35);
@@ -85,7 +78,7 @@ public class BillCalculation extends Menu{
 		listTotalPrice1.setBounds(585, 210, 100, 200);
 		receiptBtn.setBounds(710, 470, 120, 40);
 		returnBtn.setBounds(330, 470, 110, 30);
-		
+
 //	setting fonts
 		billCalLabel.setFont(new Font(null, 0, 30));
 		itemSelLabel.setFont(new Font(null, 0, 25));
@@ -129,32 +122,27 @@ public class BillCalculation extends Menu{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 //				
-				int intTotalPrice=Integer.parseInt(stringTotalPrice);
-				String stringCustomer=customerTf.getText();
-				int intCustomer=Integer.parseInt(stringCustomer);
-				int intReturn=intCustomer-intTotalPrice;
-				String stringReturn=Integer.toString(intReturn);
+				int intGrandTotalPrice = Integer.parseInt(stringGrandTotalPrice);
+				String stringCustomer = customerTf.getText();
+				int intCustomer = Integer.parseInt(stringCustomer);
+				int intReturn = intCustomer - intGrandTotalPrice;
+				String stringReturn = Integer.toString(intReturn);
 				retTf.setText(stringReturn);
 //				
 			}
 		});
-		
-		
+
 //		getting receipt
 		receiptBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new oopProject.Receipt(stringTotalPrice,listItem,listQty,listTotalPrice);
-				
+				new oopProject.Receipt(stringGrandTotalPrice, listItem, listQty, listTotalPrice);
+
 				frame3.dispose();
 			}
 		});
-		
-		
-		
-		
 
 	};
 
